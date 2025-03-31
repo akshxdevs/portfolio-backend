@@ -1,0 +1,39 @@
+# ---- BASE STAGE ----
+    FROM node:18-alpine AS builder
+
+    # Set the working directory inside the container
+    WORKDIR /app
+    
+    # Install system dependencies
+    RUN apk add --no-cache libc6-compat openssl
+    
+    # Copy package.json and install dependencies
+    COPY package.json package-lock.json ./
+    RUN npm install --production
+    
+    # Copy the entire source code
+    COPY . .
+    
+    # Ensure Prisma uses the correct binary target
+    RUN npx prisma generate --schema=./prisma/schema.prisma
+    
+    # Compile TypeScript to JavaScript
+    RUN npm run build  # This should generate a dist/ directory
+    
+    
+    # ---- FINAL STAGE ----
+    FROM node:18-alpine
+    
+    WORKDIR /app
+    
+    # Copy only necessary files from the build stage
+    COPY --from=builder /app/node_modules ./node_modules
+    COPY --from=builder /app/dist ./dist
+    COPY --from=builder /app/prisma ./prisma
+    
+    # Expose the backend port (e.g., 5000)
+    EXPOSE 5000
+    
+    # Start the backend
+    CMD ["node", "dist/index.js"]
+    
