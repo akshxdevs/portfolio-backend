@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: portfolio-site
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend  # Ensure Dockerfile is inside "backend" folder
+    container_name: portfolio_backend
+    restart: always
+    environment:
+      DATABASE_URL: "postgresql://postgres:root@postgres:5432/portfolio-site"
+      PORT: 5000
+      HOST: "0.0.0.0"  # Corrected
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+    entrypoint: ["/app/entrypoint.sh"]
+
+volumes:
+  pgdata:
