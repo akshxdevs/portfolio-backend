@@ -23,4 +23,4 @@ RUN npm run build
 EXPOSE 5000
 
 # Run database migrations and start the app
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/index.js"]
+CMD ["sh", "-c", "node dist/index.js"]
