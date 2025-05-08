@@ -44,4 +44,4 @@ router.get("/getallprojects",async(req,res)=>{
     }
 })
 
-export const pageRouter = router;
+export const projectRouter = router;

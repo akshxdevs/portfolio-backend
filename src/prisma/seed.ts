@@ -19,12 +19,21 @@ async function Main() {
     })
     await prismaClient.projects.create({
         data:{
-            projectTitle:"Social-Media-App",
-            projectDescription:"Connect, share, and chat seamlessly—your social world, all in one place.",
+            projectTitle:"Chat-App",
+            projectDescription:"A real-time chat application powered by an event-driven system using Kafka, Redis, and WebSockets for fast, scalable, and decoupled messaging.",
             githubLink:"https://github.com/akshxdevs/Social-Media-App",
-            projectImg:"https://media-hosting.imagekit.io/f75eaaa63b5d4311/WhatsApp Image 2025-03-28 at 18.54.37.jpeg?Expires=1838041133&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=w~5TT-JpaCayCAJzmx8kxm14tANlzXrMsXctlRS41GyTzl7lK4m2h5W3mDSnAe05kOUHqcrUX9kl8NuqjXRTWaunjwHZthcIWJ7O0gVGKvS1ZJMyCP0hipWz916g6VxcgtpPmeFv~xl96JaX1eugshGtUU9PXbnydkClPYy7zETlyYLkOEYDKkpUi4PtyM0gj-Pt6HWcHzsMhxgUBo4fHwjKxBv-Eo8V83SKNo6V44XVkuqmsstmaGMChF8-O35ZpPuO3~YwETwNAGXGyTNggJAJxxfe3NBdAQjuTHcrrjf6K8FULalwf-Yqa3lDLp~shDoAJka3vdplN5nTT7p~NA__"
+            projectImg:""
+        }
+    });
+    await prismaClient.projects.create({
+        data:{
+            projectTitle:"Emergency Alert System - App",
+            projectDescription:"A scalable, real-time Emergency Alert System built using event-driven architecture with Kafka, Redis, and WebSockets.",
+            githubLink:"https://github.com/akshxdevs/emergency-alert-system.git",
+            projectImg:"https://media-hosting.imagekit.io/d752bfe9a3aa4b1e/Screenshot%20From%202025-04-23%2014-33-50.png?Expires=1841333270&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Vg-3TsZwnnCJcf~RJI3vuDPsQ9AR6OJJ4jg92RdYq89R21Nz2IrkRqKoMREq~a0ux2qC-ObsY12bwR6IQQqlokz4aWWuq5tWOhZ95lfk~XCYhEIbMtKdApxM-q2Fpj6EiMMO6Q~nZiMlgUI-gk2oSYcUj6XuDr9Q8VenMdYWD4xeApbJMRbsdd0gYkI0j-AjH9x7lbugxxh44rTCfy5UZNXkvcxD~L1U4EXQ40pOkIOqGPMO7MLPUEqC0f4~PjZeR0m~~c7SnElP1rliAG4CT0R9VHLYEJ-IH13gJbOCr6rSxZ-9aAhXvyk1w4SFFDPvI8QlCwXMx85vJWAbxd42oA__"
         }
     })
+
 }
 
 Main();
